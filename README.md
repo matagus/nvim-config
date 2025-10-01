@@ -96,6 +96,18 @@ Trouble list (diagnostics/todos/refs)
 
 Note: `ncm2` is also enabled globally; if you prefer a single engine, consider disabling one of them.
 
+## AI Assistance (Codeium)
+- AI-powered code completions via Codeium
+- `Tab` → accept current suggestion
+- `Ctrl-]` (or `Alt-]`) → next suggestion
+- `Ctrl-[` (or `Alt-[`) → previous suggestion
+- `Ctrl-Shift-x` → clear current suggestion
+- `Ctrl-g` → toggle Codeium on/off for current buffer
+- `:Codeium Enable` → enable Codeium globally
+- `:Codeium Disable` → disable Codeium globally
+- `:Codeium Toggle` → toggle Codeium globally
+- `:Codeium Auth` → authenticate with Codeium
+
 ## Symbols outline (Aerial)
 - `,a` → toggle Aerial panel
 - `,b` → open Aerial navigation
