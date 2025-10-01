@@ -28,10 +28,10 @@ This Neovim setup focuses on fast navigation, great ergonomics, and solid langua
 
 ## Prerequisites
 - Neovim (0.8+ recommended)
-- Python host: configured to use `/Users/matiasmendez/.pyenv/versions/neovim3/bin/python` (install `pynvim` into that environment)
+- Python host: configured to use `/Users/matagus/.pyenv/versions/neovim3/bin/python` (install `pynvim` into that environment)
 - Python LSPs (paths customized in config):
-  - pylsp: `/Users/matiasmendez/.pyenv/versions/pylsp/bin/pylsp`
-  - ruff: `/Users/matiasmendez/.pyenv/versions/pylsp/bin/ruff`
+  - pylsp: `/Users/matagus/.pyenv/versions/pylsp/bin/pylsp`
+  - ruff: `/Users/matagus/.pyenv/versions/pylsp/bin/ruff`
   - Adjust these paths in `vim-plug/plugins.vim` if your setup differs.
 - For Rust: `rust-analyzer` and `rustfmt`
 

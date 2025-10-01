@@ -108,8 +108,6 @@ au VimEnter * AirlineTheme atomic
 set completeopt=noinsert,menuone,noselect
 
 lua <<EOF
-  vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { fg = "#FF0000", underline = true })
-
   vim.opt.termguicolors = true
 
   -- Set up nvim-cmp.
@@ -148,24 +146,17 @@ lua <<EOF
     })
   })
 
-  -- Set up lspconfig.
-  local lspconfig = require('lspconfig')
-  local lsp_defaults = lspconfig.util.default_config
-
+  -- Set up LSP with new vim.lsp.config API
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-  lsp_defaults.capabilities = vim.tbl_deep_extend(
-    'force',
-    lsp_defaults.capabilities,
-    capabilities
-  )
-
-  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 
   -- Configure `ruff-lsp`.
   -- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
   -- For the default config, along with instructions on how to customize the settings
-  require('lspconfig').ruff.setup {
+  vim.lsp.config.ruff = {
+    cmd = { "/Users/matagus/.pyenv/versions/pylsp/bin/ruff-lsp" },
+    filetypes = { 'python' },
+    root_markers = { 'pyproject.toml', 'requirements.txt', 'README.md', '.git' },
+    capabilities = capabilities,
     on_attach = on_attach,
     init_options = {
       settings = {
@@ -173,8 +164,6 @@ lua <<EOF
         args = {},
       }
     },
-    root_dir = lspconfig.util.root_pattern('pyproject.toml', 'requirements.txt', 'README.md', '.git'),
-    cmd = { "/Users/matiasmendez/.pyenv/versions/pylsp/bin/ruff", "server" }
   }
 
   -- Pylyzer setup
@@ -191,22 +180,33 @@ lua <<EOF
   --       }
   --     }
   --   },
-  --   cmd = { "/Users/matiasmendez/.pyenv/versions/pylsp/bin/pylyzer", "--server" }
+  --   cmd = { "/Users/matagus/.pyenv/versions/pylsp/bin/pylyzer", "--server" }
   -- }
 
-  require('lspconfig')['pylsp'].setup {
+  vim.lsp.config.pylsp = {
+    cmd = { "/Users/matagus/.pyenv/versions/pylsp/bin/pylsp" },
+    filetypes = { 'python' },
+    root_markers = { 'pyproject.toml', 'requirements.txt', 'setup.py', '.git' },
     capabilities = capabilities,
-    cmd = { "/Users/matiasmendez/.pyenv/versions/pylsp/bin/pylsp" }
   }
 
-  require('lspconfig')['rust_analyzer'].setup{
-  	on_attach = on_attach,
-  	flags = lsp_flags,
-  	-- Server-specific settings...
-  	settings = {
-  	  ["rust-analyzer"] = {}
-  	}
+  vim.lsp.config.rust_analyzer = {
+    cmd = { 'rust-analyzer' },
+    filetypes = { 'rust' },
+    root_markers = { 'Cargo.toml' },
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = lsp_flags,
+    -- Server-specific settings...
+    settings = {
+      ["rust-analyzer"] = {}
+    }
   }
+
+  -- Enable LSP servers
+  vim.lsp.enable('ruff')
+  vim.lsp.enable('pylsp')
+  vim.lsp.enable('rust_analyzer')
   --> https://github.com/python-lsp/python-lsp-server
 
   -- extracted from https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp/
