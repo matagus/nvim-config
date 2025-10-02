@@ -64,30 +64,65 @@ Optional: For Treesitter parsers, use `:TSUpdate`.
 
 ## LSP essentials
 (Active when an LSP attaches in a buffer)
-- `K` → hover docs
-- `gd` → go to definition
-- `gD` → go to declaration
-- `gi` → go to implementation
-- `go` → go to type definition
-- `gr` → references
-- `gs` → signature help
-- `F2` → rename symbol
-- `F4` (normal/visual) → code action / range code action
-- `gl` → show diagnostic under cursor
-- `[d` / `]d` → previous / next diagnostic
 
-Diagnostics helpers
-- `,dl` → diagnostics to location list
-- `,dq` → diagnostics to quickfix list
-- `,do` → float diagnostic
+### Navigation
+- `K` → **Hover documentation** - Display detailed information about the symbol under cursor (types, docstrings, signatures)
+- `gd` → **Go to definition** - Jump to where the symbol is defined
+- `gD` → **Go to declaration** - Jump to the declaration (useful in languages like C where declaration differs from definition)
+- `gi` → **Go to implementation** - List and jump to all implementations of an interface/abstract method
+- `go` → **Go to type definition** - Jump to the definition of the type of the symbol
+- `gr` → **Find references** - List all references to the symbol under cursor across the project
+- `gs` → **Signature help** - Show function signature and parameter information
 
-Trouble list (diagnostics/todos/refs)
-- `,xx` → open Trouble
-- `,xw` → workspace diagnostics
-- `,xd` → document diagnostics
-- `,xq` → quickfix
-- `,xl` → location list
-- `gR` → LSP references in Trouble
+### Refactoring
+- `F2` → **Rename symbol** - Intelligently rename the symbol under cursor and all its references across the project
+  - Works for functions, methods, variables, classes, etc.
+  - Respects scope (won't rename unrelated symbols with the same name)
+  - Shows preview of changes before applying
+
+### Code Actions
+- `F4` (normal mode) → **Code action** - Show available code actions at cursor position
+  - Auto-fix imports
+  - Apply suggested fixes for diagnostics
+  - Refactor code
+  - Organize imports
+- `F4` (visual mode) → **Range code action** - Apply code actions to selected range
+
+### Diagnostics Navigation
+- `gl` → **Show diagnostic** - Display diagnostic message for the current line in a floating window
+- `[d` → **Previous diagnostic** - Jump to the previous diagnostic in the buffer
+- `]d` → **Next diagnostic** - Jump to the next diagnostic in the buffer
+
+### Diagnostics Management
+- `,dl` → **Diagnostics to location list** - Load all diagnostics into the location list for easy navigation
+- `,dq` → **Diagnostics to quickfix** - Load all diagnostics into the quickfix list
+- `,do` → **Float diagnostic** - Open floating window with diagnostic details
+
+### Trouble list (diagnostics/todos/refs)
+- `,xx` → **Open Trouble** - Open the Trouble panel with workspace diagnostics
+- `,xw` → **Workspace diagnostics** - Show all diagnostics across the workspace
+- `,xd` → **Document diagnostics** - Show diagnostics for current file only
+- `,xq` → **Quickfix** - Show quickfix list in Trouble
+- `,xl` → **Location list** - Show location list in Trouble
+- `gR` → **LSP references** - Show all references in Trouble panel (better UI than `gr`)
+
+### Configured LSP servers
+This configuration includes the following LSP servers:
+
+**Python:**
+- **pylsp** (Python LSP Server) - Provides completion, hover, definitions, references, and basic diagnostics
+  - Path: `/Users/matagus/.pyenv/versions/pylsp/bin/pylsp`
+- **ruff** (Ruff LSP) - Fast Python linter and formatter with auto-fix capabilities
+  - Path: `/Users/matagus/.pyenv/versions/pylsp/bin/ruff-lsp`
+  - Provides: fast linting, import sorting, code formatting suggestions
+
+**Rust:**
+- **rust-analyzer** - Full-featured Rust LSP
+  - Provides: completion, go-to-definition, type hints, refactoring, macro expansion
+  - Works with Cargo projects
+  - Auto-formatting via `rustfmt` on save
+
+All LSP features (navigation, refactoring, diagnostics, code actions) work automatically when you open a file that has an LSP server configured.
 
 ## Completion & snippets
 - Completion via nvim-cmp with LSP source
