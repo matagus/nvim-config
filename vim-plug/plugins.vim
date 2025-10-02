@@ -244,7 +244,7 @@ lua <<EOF
 
       -- Selects a code action available at the current cursor position
       bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-      bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+      bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
 
       -- Show diagnostics in a floating window
       bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
