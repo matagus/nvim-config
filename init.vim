@@ -78,6 +78,13 @@ set background=dark
 " imap <expr> <C-k> copilot#Next() ? '<Plug>(copilot-next)'' : '<C-k>'
 " imap <expr> <C-.> copilot#Suggest() ? '<Plug>(copilot-suggest)'' : '<C-.>'
 
+" Codeium key mappings
+imap <script><silent><nowait><expr> <Tab> codeium#Accept()
+imap <S-Right> <Cmd>call codeium#CycleCompletions(1)<CR>
+imap <S-Left> <Cmd>call codeium#CycleCompletions(-1)<CR>
+imap <S-x> <Cmd>call codeium#Clear()<CR>
+imap <S-g> <Cmd>call codeium#Complete()<CR>
+
 " Rust
 autocmd FileType rust let g:rustfmt_autosave = 1
 
