@@ -1,4 +1,4 @@
-let g:python3_host_prog = '/Users/matagus/.pyenv/versions/neovim3/bin/python'
+let g:python3_host_prog = $NVIM_PYTHON_HOST_DIR . '/bin/python'
 let g:polyglot_disabled = ['markdown']
 
 syntax on                       "syntax highlighting, see :help syntax

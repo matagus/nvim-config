@@ -153,7 +153,7 @@ lua <<EOF
   -- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
   -- For the default config, along with instructions on how to customize the settings
   vim.lsp.config.ruff = {
-    cmd = { "/Users/matagus/.pyenv/versions/pylsp/bin/ruff-lsp" },
+cmd = { os.getenv("NVIM_LSP_BIN_DIR") .. "/ruff-lsp" },
     filetypes = { 'python' },
     root_markers = { 'pyproject.toml', 'requirements.txt', 'README.md', '.git' },
     capabilities = capabilities,
@@ -180,11 +180,11 @@ lua <<EOF
   --       }
   --     }
   --   },
-  --   cmd = { "/Users/matagus/.pyenv/versions/pylsp/bin/pylyzer", "--server" }
+  --   cmd = { os.getenv("NVIM_LSP_BIN_DIR") .. "/pylyzer", "--server" }
   -- }
 
   vim.lsp.config.pylsp = {
-    cmd = { "/Users/matagus/.pyenv/versions/pylsp/bin/pylsp" },
+cmd = { os.getenv("NVIM_LSP_BIN_DIR") .. "/pylsp" },
     filetypes = { 'python' },
     root_markers = { 'pyproject.toml', 'requirements.txt', 'setup.py', '.git' },
     capabilities = capabilities,

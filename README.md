@@ -28,11 +28,14 @@ This Neovim setup focuses on fast navigation, great ergonomics, and solid langua
 
 ## Prerequisites
 - Neovim (0.8+ recommended)
-- Python host: configured to use `/Users/matagus/.pyenv/versions/neovim3/bin/python` (install `pynvim` into that environment)
-- Python LSPs (paths customized in config):
-  - pylsp: `/Users/matagus/.pyenv/versions/pylsp/bin/pylsp`
-  - ruff: `/Users/matagus/.pyenv/versions/pylsp/bin/ruff`
-  - Adjust these paths in `vim-plug/plugins.vim` if your setup differs.
+- Python host: This configuration needs to know where your Python environment is. Set the following environment variable in your shell's configuration file (e.g. `.zshrc`):
+  ```sh
+  export NVIM_PYTHON_HOST_DIR="$HOME/.pyenv/versions/neovim3"
+  ```
+- Python LSPs: The following LSP servers are used. Make sure they are installed and in your path.
+  ```sh
+  export NVIM_LSP_BIN_DIR="$HOME/.pyenv/versions/pylsp/bin"
+  ```
 - For Rust: `rust-analyzer` and `rustfmt`
 
 ## Installation
@@ -111,9 +114,7 @@ This configuration includes the following LSP servers:
 
 **Python:**
 - **pylsp** (Python LSP Server) - Provides completion, hover, definitions, references, and basic diagnostics
-  - Path: `/Users/matagus/.pyenv/versions/pylsp/bin/pylsp`
 - **ruff** (Ruff LSP) - Fast Python linter and formatter with auto-fix capabilities
-  - Path: `/Users/matagus/.pyenv/versions/pylsp/bin/ruff-lsp`
   - Provides: fast linting, import sorting, code formatting suggestions
 
 **Rust:**
