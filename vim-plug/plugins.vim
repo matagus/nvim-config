@@ -11,7 +11,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
     " File Explorer
-    Plug 'scrooloose/NERDTree'
+    Plug 'nvim-tree/nvim-tree.lua'
     " Auto pairs for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
     Plug 'dcampos/nvim-snippy'
@@ -98,6 +98,26 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'mfussenegger/nvim-dap-python'
 
 call plug#end()
+
+lua <<EOF
+require('nvim-web-devicons').setup()
+
+require('nvim-tree').setup({
+  update_focused_file = {
+    enable = true,
+  },
+  actions = {
+    open_file = {
+      quit_on_open = true,
+    }
+  }
+})
+
+vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<C-t>', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<C-f>', ':NvimTreeFindFile<CR>')
+EOF
 
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()

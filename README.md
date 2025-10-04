@@ -4,7 +4,7 @@ This Neovim setup focuses on fast navigation, great ergonomics, and solid langua
 
 ## At a glance
 - Project/file navigation
-  - NERDTree sidebar for browsing files
+  - nvim-tree.lua sidebar for browsing files
   - Telescope for fuzzy finding files, buffers, symbols, and help
 - Language tooling (LSP)
   - Go to definition/implementation, hover docs, rename, code actions
@@ -48,11 +48,8 @@ Optional: For Treesitter parsers, use `:TSUpdate`.
 ## Leader key
 - Leader is set to comma: `,`
 
-## File tree (NERDTree)
-- Auto-opens on start when no files are passed
-- `,n` → focus NERDTree
-- `Ctrl-n` → open NERDTree
-- `Ctrl-t` → toggle NERDTree
+## File tree (nvim-tree.lua)
+- `,n` or `Ctrl-n` or `Ctrl-t` → toggle file explorer
 - `Ctrl-f` → find current file in tree
 
 ## Fuzzy find (Telescope)
@@ -188,7 +185,7 @@ AI-powered code completions via Codeium
 - Python: pylsp, ruff LSP
 - Rust: rust.vim, rustfmt, rust-analyzer
 - UI: vim-airline, web-devicons, nightfox/material/base16 themes
-- Navigation: NERDTree, Telescope, Aerial, barbar
+- Navigation: nvim-tree.lua, Telescope, Aerial, barbar
 - Diagnostics: trouble.nvim
 - Treesitter: nvim-treesitter
 - Extras: zen-mode, twilight, nvim-notify, dressing, overseer, nvim-dap, nvim-dap-python, codeium
@@ -197,7 +194,7 @@ AI-powered code completions via Codeium
 - Leader key: change in `init.vim` (currently `,`)
 - Colorscheme: change in `init.vim` (`colorscheme nightfox`)
 - Python host and LSP paths: see the top of `init.vim` and the LSP section inside `vim-plug/plugins.vim`
-- Telescope/Aerial/NERDTree and other keymaps: see their mappings in `init.vim`
+- Telescope/Aerial/nvim-tree.lua and other keymaps: see their mappings in `init.vim`
 
 If you need help with any command, use `:help <topic>` (e.g., `:help telescope`, `:help lsp`, `:help trouble`).
 
